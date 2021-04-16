@@ -6,3 +6,40 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.center {
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  text-decoration: none;
+  border: 2px solid gray;
+  height: 25%;
+  width: 35%;
+  margin: auto; 
+}
+
+.user-image{
+  width:100px;
+  height:100px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.tab-content {
+  margin: auto;
+  width: 50%;
+}
+
+.card-body {
+  background-color: #f7f7f7;
+}
+
+.card-header-custom {
+  background-color: white;
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}

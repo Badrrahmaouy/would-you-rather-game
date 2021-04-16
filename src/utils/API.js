@@ -9,3 +9,21 @@ export const getInitialData = () => (
     quests
   }))
 )
+
+export const formatQuest = (quest, authedUser, author) => {
+  const { id, optionOne, optionTwo } = quest
+  const { name, avatarURL } = author
+  
+  return {
+    name,
+    id,
+    avatar: avatarURL,
+    answers: optionOne['votes'].length + optionTwo['votes'].length,
+    textOne: optionOne['text'],
+    textTwo: optionTwo['text'],
+    answeredOne: optionOne['votes'].includes(authedUser),
+    answeredTwo: optionTwo['votes'].includes(authedUser),
+    answersOne: optionOne['votes'].length,
+    answersTwo: optionTwo['votes'].length,
+  }
+}

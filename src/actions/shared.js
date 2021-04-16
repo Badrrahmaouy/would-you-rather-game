@@ -1,10 +1,10 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar"
 import { _getQuestions, _getUsers } from "../utils/_DATA"
-// import { setAuthedUser } from "./authedUser"
+import { setAuthedUser } from "./authedUser" //for develop
 import { receiveQuests } from "./quests"
 import { receiveUsers } from "./users"
 
-// const authedID = 'tylermcginnis'
+const authedID = 'tylermcginnis'  //for develop
 
 
 export const handleInitialData = () => {
@@ -12,6 +12,7 @@ export const handleInitialData = () => {
     return _getUsers()
     .then(users => {
       dispatch(receiveUsers(users))
+      dispatch(setAuthedUser(authedID)) //for develop
     })
   }
 }
