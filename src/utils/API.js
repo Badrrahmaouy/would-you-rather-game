@@ -1,4 +1,4 @@
-import { _getQuestions, _getUsers } from "./_DATA"
+import { _getQuestions, _getUsers, _saveQuestionAnswer } from "./_DATA"
 
 export const getInitialData = () => (
   Promise.all([
@@ -26,4 +26,8 @@ export const formatQuest = (quest, authedUser, author) => {
     answersOne: optionOne['votes'].length,
     answersTwo: optionTwo['votes'].length,
   }
+}
+
+export const saveQuestionAnswer = info => {
+  return _saveQuestionAnswer(info)
 }

@@ -26,6 +26,7 @@ li {
   height:100px;
   object-fit: contain;
   object-position: center;
+  border-radius: 50%;
 }
 
 .tab-content {
@@ -42,4 +43,42 @@ li {
   padding: .75rem 1.25rem;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.answer-card {
+  width: 40%;
+  border: 1px solid grey;
+  margin: auto;
+  position: relative;
+  top: 200px;
+}
+
+.yourvote-item{
+  padding: 3px 10px;
+  background: #ffc000;
+  width: fit-content;
+  margin-left: auto;
+  border-radius: 30px;
+}
+
+.progress-custom {
+  display: flex;
+  height: 30px;
+  overflow: hidden;
+  line-height: 0;
+  font-size: .75rem;
+  background-color: #e9ecef;
+  border-radius: .25rem;
+}
+
+.progress-custom-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #007bff;
+  transition: width .6s ease;
 }

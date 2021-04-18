@@ -3,13 +3,13 @@ import Quest from './Quest'
 
 class QuestsList extends React.Component {
   render() {
-    const { quests } = this.props
+    const { quests, answered } = this.props
 
     return (
       <div>
         {
           quests.map(quest => (
-            <div key={quest.id}><Quest id={quest.id} /></div>
+            <div key={quest.id}><Quest id={quest.id} answered={answered} /></div>
           ))
         }
       </div>

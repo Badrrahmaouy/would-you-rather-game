@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 class Quest extends React.Component {
   render() {
-    const { question, userQuest } = this.props
+    const { question, userQuest, answered } = this.props
     const user = userQuest[0]
     // console.log('quest: ', userQuest)
 
@@ -20,11 +20,11 @@ class Quest extends React.Component {
             <div className="col-9">
               <h6>Would You Rather...?</h6>
               <p>{question.optionOne.text.substring(0, 10)}...</p>
-              {/* {
-                answered === 'unanswered'
-                  ? <Link className="btn btn-primary" to={path1}>Submit</Link>
-                  : <Link className="btn btn-primary" to={path2}>View Answer</Link>
-              } */}
+              {
+                answered === 'answered'
+                  ? <button className="btn btn-primary">View Answer</button>
+                  : <button className="btn btn-primary">Answer</button>
+              }
             </div>
           </div>
         </div>
@@ -33,13 +33,14 @@ class Quest extends React.Component {
   }
 }
 
-const mapStateToProps = ({ quests, authedUser, users }, { id }) => {
+const mapStateToProps = ({ quests, authedUser, users }, { id, answered }) => {
   const question = quests[id]
   const userQuest = Object.values(users).filter(user => user.id === question.author)
 
   return {
     question,
-    userQuest
+    userQuest,
+    answered
   }
 }
 
