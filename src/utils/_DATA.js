@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: './avatar-mockups-13b.jpg',
+    avatarURL: './avatars/avatar-mockups-13b.jpg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: './avatar-mockups-13a.jpg',
+    avatarURL: './avatars/avatar-mockups-13a.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: './avatar-mockups-13c.jpg',
+    avatarURL: './avatars/avatar-mockups-13c.jpg',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -131,25 +131,25 @@ export function _getQuestions() {
   })
 }
 
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+function formatQuestion({ optionOne, optionTwo, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
-    author,
+    author: author.authedUser,
     optionOne: {
       votes: [],
-      text: optionOneText,
+      text: optionOne,
     },
     optionTwo: {
       votes: [],
-      text: optionTwoText,
+      text: optionTwo,
     }
   }
 }
 
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
-    const authedUser = question.author;
+    const authedUser = question.author.authedUser;
     const formattedQuestion = formatQuestion(question);
 
     setTimeout(() => {
@@ -162,7 +162,7 @@ export function _saveQuestion(question) {
         ...users,
         [authedUser]: {
           ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
+          questions: users[authedUser].questions.push(formattedQuestion.id)
         }
       }
 

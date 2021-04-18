@@ -56,7 +56,8 @@ class AnswerQuest extends React.Component {
                               checked={this.state.selectedOption === 'optionOne'}
                               onChange={e => {
                                 this.setState({ selectedOption: "optionOne" })
-                              }} />
+                              }} 
+                            />
                             {/* answer two */}
                             <Form.Check
                               type="radio"
@@ -67,7 +68,8 @@ class AnswerQuest extends React.Component {
                               checked={this.state.selectedOption === 'optionTwo'}
                               onChange={e => {
                                 this.setState({ selectedOption: "optionTwo" })
-                              }} />
+                              }} 
+                            />
                           </div>
                         </Form>
                         {/* submit button */}

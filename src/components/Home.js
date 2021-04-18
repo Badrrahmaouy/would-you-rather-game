@@ -3,8 +3,9 @@ import { Tab, Tabs } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading-bar'
 import { handleHomeData } from '../actions/shared'
+import Leaderboard from './Leaderboard'
 //import AnswerQuest from './AnswerQuest'
-import NewQuest from './NewQuest'
+//import NewQuest from './NewQuest'
 import QuestsList from './QuestsList'
 //import ViewAnswer from './ViewAnswer'
 
@@ -23,9 +24,10 @@ class Home extends React.Component {
         <LoadingBar />
         {
           quests.length > 0 
-            /* ? <AnswerQuest match={{ params: { id: "8xf0y6ziyjabvozdd253nd"}}} /> */
-            /* ? <ViewAnswer match={{ params: { id: "vthrdm985a262al8qx3do"} }} /> */
-          ? <NewQuest />
+            //? <AnswerQuest match={{ params: { id: "8xf0y6ziyjabvozdd253nd"}}} /> 
+            //? <ViewAnswer match={{ params: { id: "vthrdm985a262al8qx3do"} }} /> 
+            //? <NewQuest />
+          ? <Leaderboard />
           : <div className='center'>
               <h3>Home</h3>
               <Tabs defaultActiveKey='unanswered' className='mx-auto d-flex flex-row justify-content-center'>

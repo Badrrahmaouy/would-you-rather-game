@@ -1,4 +1,4 @@
-import { RECEIVE_QUESTS, SAVE_ANSWER } from "../actions/quests"
+import { RECEIVE_QUESTS, SAVE_ANSWER, SAVE_NEW_QUEST } from "../actions/quests"
 
 const quests = (state = {}, action) => {
   switch(action.type) {
@@ -19,8 +19,14 @@ const quests = (state = {}, action) => {
             votes: state[id][selectedOption].votes.concat([authedUser])
           }
         }
-
       }
+      case SAVE_NEW_QUEST:
+        const { newQuest } = action
+
+        return {
+          ...state,
+          [newQuest.id]: newQuest
+        }
     default:
       return state
   }

@@ -36,6 +36,7 @@ li {
 
 .card-body {
   background-color: #f7f7f7;
+  border-radius: 20px;
 }
 
 .card-header-custom {
@@ -81,4 +82,42 @@ li {
   white-space: nowrap;
   background-color: #007bff;
   transition: width .6s ease;
+}
+
+#user-card {
+  border-radius: 20px;
+}
+
+.score{
+  width:50px;
+  height:50px;
+  margin:20px auto;
+  border-radius:50px;
+  background:#ffab00;
+  font-weight:700;
+  font-size:24px;
+  color:white;
+  display:flex;
+  flex-flow:row;
+  align-items: center;
+  justify-content: center;
+}
+
+.prize-tag{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 10px;
+  border-radius: 50%;
+}
+.gold{
+  background: gold;
+}
+.silver{
+  background:silver;
+  color:white;
+}
+.bronze{
+  background:#dbb256;
+  color:white;
 }

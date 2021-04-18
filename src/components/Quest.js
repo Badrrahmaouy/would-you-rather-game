@@ -5,7 +5,6 @@ class Quest extends React.Component {
   render() {
     const { question, userQuest, answered } = this.props
     const user = userQuest[0]
-    // console.log('quest: ', userQuest)
 
     return (
       <div className="card my-4 poll-item" key={question.id}>
@@ -18,7 +17,7 @@ class Quest extends React.Component {
               <img className="user-image" src={user ? user.avatarURL : ''} alt="user" />
             </div>
             <div className="col-9">
-              <h6>Would You Rather...?</h6>
+              <h6>Would You Rather?</h6>
               <p>{question.optionOne.text.substring(0, 10)}...</p>
               {
                 answered === 'answered'
@@ -33,7 +32,7 @@ class Quest extends React.Component {
   }
 }
 
-const mapStateToProps = ({ quests, authedUser, users }, { id, answered }) => {
+const mapStateToProps = ({ quests, users }, { id, answered }) => {
   const question = quests[id]
   const userQuest = Object.values(users).filter(user => user.id === question.author)
 
