@@ -3,6 +3,10 @@ import React from 'react'
 class UserScore extends React.Component {
   render() {
     const { user } = this.props
+    // component data
+    const answeredQuest = Object.keys(user.answers).length
+    const createdQuest = user.questions.length
+    const totalScore = answeredQuest + createdQuest
 
     return (
       <div id='user-card' className="card my-4 poll-item">
@@ -13,12 +17,12 @@ class UserScore extends React.Component {
             </div>
             <div className="col-4">
               <h3>{user.name}</h3>
-              <p>Answered Questions : {Object.keys(user.answers).length}</p>
-              <p>Created Questions : {user.questions.length}</p>
+              <p>Answered Questions : {answeredQuest}</p>
+              <p>Created Questions : {createdQuest}</p>
             </div>
             <div className="col-3 text-center">
               <h6>Score</h6>
-              <div className="score">{Object.keys(user.answers).length + user.questions.length}</div>
+              <div className="score">{totalScore}</div>
             </div>
           </div>
         </div>

@@ -6,13 +6,15 @@ class QuestsList extends React.Component {
     const { quests, answered } = this.props
 
     return (
-      <div>
+      <>
         {
-          quests.map(quest => (
-            <div key={quest.id}><Quest id={quest.id} answered={answered} /></div>
+          quests.length > 0 
+          ? quests.map(quest => (
+            <Quest key={quest.id} id={quest.id} answered={answered} />
           ))
+          : <p className='no-quests'>You have answered all questions.</p>
         }
-      </div>
+      </>
     )
   }
 }

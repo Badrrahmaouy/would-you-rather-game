@@ -1,18 +1,19 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar"
-import { getQuestions, getUsers } from "../utils/API"
-import { setAuthedUser } from "./authedUser" //for develop
+import { getQuestions, handleAllData } from "../utils/API"
+//import { setAuthedUser } from "./authedUser" //for develop
 import { receiveQuests } from "./quests"
 import { receiveUsers } from "./users"
 
-const authedID = 'tylermcginnis'  //for develop
+//const authedID = 'tylermcginnis'  //for develop
 
 
 export const handleInitialData = () => {
   return dispatch => {
-    return getUsers()
-    .then(users => {
+    return handleAllData()
+      .then(({users, quests}) => {
       dispatch(receiveUsers(users))
-      dispatch(setAuthedUser(authedID)) //for develop
+      dispatch(receiveQuests(quests))
+      //dispatch(setAuthedUser(authedID)) //for develop
     })
   }
 }

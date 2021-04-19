@@ -1,13 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Quest extends React.Component {
   render() {
     const { question, userQuest, answered } = this.props
     const user = userQuest[0]
+    const pathAnswer = '/quests/answer/' + question.id
+    const pathView = `/quests/view/${question.id}`
 
     return (
-      <div className="card my-4 poll-item" key={question.id}>
+      <div className="card my-4 poll-item">
         <h6 className="card-header-custom">{user.name}
           <span> asks:</span>
         </h6>
@@ -21,8 +24,8 @@ class Quest extends React.Component {
               <p>{question.optionOne.text.substring(0, 10)}...</p>
               {
                 answered === 'answered'
-                  ? <button className="btn btn-primary">View Answer</button>
-                  : <button className="btn btn-primary">Answer</button>
+                  ? <Link className="btn btn-primary" to={pathView}>View Answer</Link>
+                  : <Link className="btn btn-primary" to={pathAnswer}>Answer</Link>
               }
             </div>
           </div>

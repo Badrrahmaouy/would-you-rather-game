@@ -15,9 +15,7 @@ li {
   list-style-type: none;
   padding: 10px;
   text-decoration: none;
-  border: 2px solid gray;
   height: 25%;
-  width: 35%;
   margin: auto; 
 }
 
@@ -110,14 +108,48 @@ li {
   padding: 4px 10px;
   border-radius: 50%;
 }
+
 .gold{
   background: gold;
 }
+
 .silver{
   background:silver;
   color:white;
 }
+
 .bronze{
   background:#dbb256;
   color:white;
+}
+
+.logo{
+  left: 0;
+  right: 0;
+  width: 300px;
+}
+
+.btn-link{
+  background:transparent;
+  border:none;
+  color:#1a1a1a;
+}
+
+.nav .nav-item a{
+  color:#5e5e5e;
+  text-decoration: none;
+}
+.nav .nav-item a.active,.nav .nav-item a:hover{
+  color:#1a1a1a;
+}
+
+#hr {
+  background-color: #66b1ff;
+  height: 4px;
+  margin: 0 0 50px 0;
+}
+
+.no-quests {
+  font-size: 2em;
+  margin-top: 200px;
 }

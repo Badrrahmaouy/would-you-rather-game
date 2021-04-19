@@ -30,12 +30,12 @@ class Leaderboard extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
-  const totalScore = user => {
-    const total = Object.keys(user.answers).length + user.questions.length
-    return total
-  }
+const totalScore = user => {
+  const total = Object.keys(user.answers).length + user.questions.length
+  return total
+}
 
+const mapStateToProps = ({ users }) => {
   const sortedUsers = Object.values(users).sort((a, b) => (
     totalScore(b) - totalScore(a)
   ))

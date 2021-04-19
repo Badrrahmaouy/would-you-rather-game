@@ -5,6 +5,16 @@ import {
   _saveQuestionAnswer 
 } from "./_DATA"
 
+export const handleAllData = () => {
+  return Promise.all([
+    _getUsers(),
+    _getQuestions()
+  ]).then(([users, quests]) => ({
+    users,
+    quests
+  }))
+}
+
 export const getUsers = () => {
   return _getUsers()
 }

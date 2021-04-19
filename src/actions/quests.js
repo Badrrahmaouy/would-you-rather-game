@@ -1,5 +1,6 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar"
 import { saveNewQuest, saveQuestionAnswer } from "../utils/API"
+import { saveAnswerToUser } from "./users"
 
 export const RECEIVE_QUESTS = 'RECEIVE_QUEST'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
@@ -18,9 +19,9 @@ const saveAnswer = ({ id, authedUser, selectedOption }) => ({
 })
 
 export const handleSaveAnswer = answer => {
-  console.log(answer)
   return dispatch => {
     dispatch(saveAnswer(answer))
+    dispatch(saveAnswerToUser(answer))
     return saveQuestionAnswer(answer)
       .catch(e => {
         console.warn('Error while submitting answer', e)
@@ -36,15 +37,18 @@ const saveQuest = newQuest => ({
 export const handleSaveQuest = (optionOne, optionTwo) => {
   return (dispatch, getState) => {
     const authedUser = getState()
+    const user = authedUser.authedUser
 
     dispatch(showLoading())
 
     return saveNewQuest({
       optionOne,
       optionTwo,
-      author: authedUser
+      user
     })
-    .then(quest => dispatch(saveQuest(quest)))
+    .then(quest => {
+      dispatch(saveQuest(quest))
+    })
     .then(() => dispatch(hideLoading()))
   }
 }

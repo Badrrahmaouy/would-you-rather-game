@@ -6,10 +6,11 @@ class ViewAnswer extends React.Component {
   render() {
     const { quest, userQuest, authedUser } = this.props
     const user = userQuest[0]
+    const question = quest[0]
 
     // progress bar variables
-    const optionOneVotes = quest.optionOne['votes'].length
-    const optionTwoVotes = quest.optionTwo['votes'].length
+    const optionOneVotes = question.optionOne['votes'].length
+    const optionTwoVotes = question.optionTwo['votes'].length
     const totalVotes = optionOneVotes + optionTwoVotes
     const optionOnePercentage = (optionOneVotes / totalVotes) * 100
     const optionTwoPercentage = (optionTwoVotes / totalVotes) * 100
@@ -34,11 +35,11 @@ class ViewAnswer extends React.Component {
                         {/* answer one */}
                         <div className="card vote-card p-2 m-3">
                           {
-                            quest.optionOne.votes.includes(authedUser)
+                            question.optionOne.votes.includes(authedUser)
                               ? <span className="yourvote-item">Your Vote</span>
                               : ''
                           }
-                          <h6>{quest.optionOne.text}</h6>
+                          <h6>{question.optionOne.text}</h6>
                           <ProgressBar 
                             bsPrefix='progress-custom'
                             variant={
@@ -53,11 +54,11 @@ class ViewAnswer extends React.Component {
                         {/* answer two */}
                         <div className="card vote-card p-2 m-3">
                           {
-                            quest.optionTwo.votes.includes(authedUser)
+                            question.optionTwo.votes.includes(authedUser)
                               ? <span className="yourvote-item">Your Vote</span>
                               : ''
                           }
-                          <h6>{quest.optionTwo.text}</h6>
+                          <h6>{question.optionTwo.text}</h6>
                           <ProgressBar
                             bsPrefix='progress-custom'
                             variant={
@@ -85,8 +86,8 @@ class ViewAnswer extends React.Component {
 
 const mapStateToProps = ({ quests, authedUser, users}, props) => {
   const { id } = props.match.params
-  const quest = quests[id]
-  const userQuest = Object.values(users).filter(u => u.id === quests[id].author)
+  const quest = Object.values(quests).filter(quest => quest.id === id)
+  const userQuest = Object.values(users).filter(u => u.id === quest[0].author)
 
   return {
     quest,

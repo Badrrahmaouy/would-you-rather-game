@@ -12,15 +12,17 @@ class AnswerQuest extends React.Component {
     e.preventDefault()
 
     
-    const { dispatch, authedUser, id } = this.props
+    const { dispatch, authedUser, id, history } = this.props
     const { selectedOption } = this.state
-    console.log(selectedOption)
+
 
     dispatch(handleSaveAnswer({
       authedUser, 
       id, 
       selectedOption
     }))
+
+    history.push(`/quests/view/${id}`)
   }
 
   render() {
@@ -52,7 +54,7 @@ class AnswerQuest extends React.Component {
                               id={'groupOptions' + id + 1}
                               className="my-2"
                               name={'groupOptions' + id}
-                              label={quest.optionOne ? quest.optionOne.text : ''}
+                              label={quest[0].optionOne ? quest[0].optionOne.text : ''}
                               checked={this.state.selectedOption === 'optionOne'}
                               onChange={e => {
                                 this.setState({ selectedOption: "optionOne" })
@@ -64,7 +66,7 @@ class AnswerQuest extends React.Component {
                               id={'groupOptions' + id + 2}
                               className="my-2"
                               name={'groupOptions' + id}
-                              label={quest.optionTwo ? quest.optionTwo.text : ''}
+                              label={quest[0].optionTwo ? quest[0].optionTwo.text : ''}
                               checked={this.state.selectedOption === 'optionTwo'}
                               onChange={e => {
                                 this.setState({ selectedOption: "optionTwo" })
@@ -95,11 +97,12 @@ class AnswerQuest extends React.Component {
 
 const mapStateToProps = ({ quests, authedUser, users }, props) => {
   const { id } = props.match.params
-  const userQuest = Object.values(users).filter(u => u.id === quests[id].author)
+  const quest = Object.values(quests).filter(quest => quest.id === id)
+  const userQuest = Object.values(users).filter(u => u.id === quest[0].author)
 
   return {
     id, 
-    quest: quests[id],
+    quest: quest,
     userQuest,
     authedUser
   }

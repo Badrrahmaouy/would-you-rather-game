@@ -20,9 +20,11 @@ class NewQuest extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    const { dispatch } = this.props
+    const { dispatch, history } = this.props
     const { optionOne, optionTwo } = this.state
     dispatch(handleSaveQuest(optionOne, optionTwo))
+
+    history.push('/')
   }
 
   render() {
