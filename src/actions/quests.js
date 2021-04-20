@@ -1,4 +1,3 @@
-import { hideLoading, showLoading } from "react-redux-loading-bar"
 import { saveNewQuest, saveQuestionAnswer } from "../utils/API"
 import { saveAnswerToUser } from "./users"
 
@@ -39,8 +38,6 @@ export const handleSaveQuest = (optionOne, optionTwo) => {
     const authedUser = getState()
     const user = authedUser.authedUser
 
-    dispatch(showLoading())
-
     return saveNewQuest({
       optionOne,
       optionTwo,
@@ -49,6 +46,5 @@ export const handleSaveQuest = (optionOne, optionTwo) => {
     .then(quest => {
       dispatch(saveQuest(quest))
     })
-    .then(() => dispatch(hideLoading()))
   }
 }

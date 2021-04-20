@@ -1,12 +1,18 @@
 import React from 'react'
 import { ProgressBar } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router'
 
 class ViewAnswer extends React.Component {
   render() {
-    const { quest, userQuest, authedUser } = this.props
+    const { quest, userQuest, authedUser, bad_path } = this.props
     const user = userQuest[0]
     const question = quest[0]
+    
+    // redirecting if quest don't exist
+    if(bad_path) {
+      return <Redirect to='/quests/bad_id' />
+    }
 
     // progress bar variables
     const optionOneVotes = question.optionOne['votes'].length
@@ -14,6 +20,7 @@ class ViewAnswer extends React.Component {
     const totalVotes = optionOneVotes + optionTwoVotes
     const optionOnePercentage = (optionOneVotes / totalVotes) * 100
     const optionTwoPercentage = (optionTwoVotes / totalVotes) * 100
+
 
     return (
       <div className="container my-5">
@@ -32,6 +39,7 @@ class ViewAnswer extends React.Component {
                       </div>
                       <div className="col-9">
                         <h6>Results</h6>
+                        <h7>Would You Rather...?</h7>
                         {/* answer one */}
                         <div className="card vote-card p-2 m-3">
                           {
@@ -86,13 +94,20 @@ class ViewAnswer extends React.Component {
 
 const mapStateToProps = ({ quests, authedUser, users}, props) => {
   const { id } = props.match.params
+  let bad_path = false
   const quest = Object.values(quests).filter(quest => quest.id === id)
-  const userQuest = Object.values(users).filter(u => u.id === quest[0].author)
+  let userQuest = ''
+  const hasAnwered = Object.keys(users[authedUser].answers).includes(quest[0].id)
+  
+  quest.length && hasAnwered === true 
+  ? userQuest = Object.values(users).filter(u => u.id === quest[0].author) 
+  : bad_path = true
 
   return {
     quest,
     userQuest,
-    authedUser
+    authedUser,
+    bad_path
   }
 }
 

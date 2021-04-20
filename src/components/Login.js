@@ -21,7 +21,6 @@ class Login extends React.Component {
     const { authedUser } = this.state
 
     this.props.dispatch(setAuthedUser(authedUser))
-    this.props.history.push('/')
   }
 
   render() {
@@ -33,6 +32,12 @@ class Login extends React.Component {
         <div className="row d-flex flex-row justify-content-center">
           <div className="col-6">
             <div className="card p-5 my-5">
+              <img 
+                id='login-logo'
+                src='./React-Redux-Logo.jpg' 
+                alt='logo' 
+                width={200} 
+              />
               <h1 className="py-5 text-center">Welcome</h1>
               <Form.Group>
                 <Form.Label>Choose User:</Form.Label>

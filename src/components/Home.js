@@ -9,7 +9,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { answeredQuest, unansweredQuest } = this.props
+    const { answeredQuest, unansweredQuest, loadingBar } = this.props
     
     // sorting questions and answers
     const answeredQuestSorted = answeredQuest.sort((a, b) => (
@@ -21,7 +21,21 @@ class Home extends React.Component {
     
     return (
       <div>
-        <div className='center'>
+        {
+          loadingBar.default === 1 
+          ? null 
+            : <div className='center'>
+              <Tabs defaultActiveKey='unanswered' className='mx-auto d-flex flex-row justify-content-center'>
+                <Tab eventKey='unanswered' title="Unanswered">
+                  <QuestsList quests={unansweredQuestSorted} answered={'unanswered'} />
+                </Tab>
+                <Tab eventKey='answered' title="Answered">
+                  <QuestsList quests={answeredQuestSorted} answered={'answered'} />
+                </Tab>
+              </Tabs>
+            </div>
+        }
+        {/* <div className='center'>
           <Tabs defaultActiveKey='unanswered' className='mx-auto d-flex flex-row justify-content-center'>
             <Tab eventKey='unanswered' title="Unanswered">
               <QuestsList quests={unansweredQuestSorted} answered={'unanswered'} />
@@ -30,13 +44,13 @@ class Home extends React.Component {
               <QuestsList quests={answeredQuestSorted} answered={'answered'} />
             </Tab>
           </Tabs>
-        </div>
+        </div> */}
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ quests, authedUser }) => {
+const mapStateToProps = ({ quests, authedUser, loadingBar }) => {
   let answeredQuest = []
   let unansweredQuest = []
   const questsArray = Object.keys(quests)
@@ -49,7 +63,8 @@ const mapStateToProps = ({ quests, authedUser }) => {
 
   return {
     answeredQuest,
-    unansweredQuest
+    unansweredQuest,
+    loadingBar
   }
 }
 

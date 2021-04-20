@@ -11,6 +11,11 @@ body {
   text-align: center;
 }
 
+#login-logo {
+  margin: auto;
+}
+
+/* homepage style */
 li {
   list-style-type: none;
   padding: 10px;
@@ -32,6 +37,12 @@ li {
   width: 50%;
 }
 
+.no-quests {
+  font-size: 2em;
+  margin-top: 200px;
+}
+
+/* quest card style  */
 .card-body {
   background-color: #f7f7f7;
   border-radius: 20px;
@@ -42,14 +53,6 @@ li {
   padding: .75rem 1.25rem;
   margin-bottom: 0;
   border-bottom: 1px solid rgba(0,0,0,.125);
-}
-
-.answer-card {
-  width: 40%;
-  border: 1px solid grey;
-  margin: auto;
-  position: relative;
-  top: 200px;
 }
 
 .yourvote-item{
@@ -82,6 +85,7 @@ li {
   transition: width .6s ease;
 }
 
+/* leaderboard style  */
 #user-card {
   border-radius: 20px;
 }
@@ -122,7 +126,7 @@ li {
   background:#dbb256;
   color:white;
 }
-
+/* navbar style  */
 .logo{
   left: 0;
   right: 0;
@@ -147,9 +151,4 @@ li {
   background-color: #66b1ff;
   height: 4px;
   margin: 0 0 50px 0;
-}
-
-.no-quests {
-  font-size: 2em;
-  margin-top: 200px;
 }
