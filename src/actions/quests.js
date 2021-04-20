@@ -1,4 +1,4 @@
-import { saveNewQuest, saveQuestionAnswer } from "../utils/API"
+import { saveNewQuest, saveQuestionAnswer } from "../utils/helpers"
 import { saveAnswerToUser } from "./users"
 
 export const RECEIVE_QUESTS = 'RECEIVE_QUEST'

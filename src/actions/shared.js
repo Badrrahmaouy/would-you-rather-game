@@ -1,5 +1,5 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar"
-import { getQuestions, handleAllData } from "../utils/API"
+import { getQuestions, handleAllData } from "../utils/helpers"
 //import { setAuthedUser } from "./authedUser" //for develop
 import { receiveQuests } from "./quests"
 import { receiveUsers } from "./users"
