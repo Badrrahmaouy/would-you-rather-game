@@ -34,7 +34,7 @@ class Login extends React.Component {
             <div className="card p-5 my-5">
               <img 
                 id='login-logo'
-                src='./React-Redux-Logo.jpg' 
+                src='../../React-Redux-Logo.jpg' 
                 alt='logo' 
                 width={200} 
               />
