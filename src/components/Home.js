@@ -25,26 +25,16 @@ class Home extends React.Component {
           loadingBar.default === 1 
           ? null 
             : <div className='center'>
-              <Tabs defaultActiveKey='unanswered' className='mx-auto d-flex flex-row justify-content-center'>
-                <Tab eventKey='unanswered' title="Unanswered">
-                  <QuestsList quests={unansweredQuestSorted} answered={'unanswered'} />
-                </Tab>
-                <Tab eventKey='answered' title="Answered">
-                  <QuestsList quests={answeredQuestSorted} answered={'answered'} />
-                </Tab>
+                <Tabs defaultActiveKey='unanswered' className='mx-auto d-flex flex-row justify-content-center'>
+                  <Tab eventKey='unanswered' title="Unanswered">
+                    <QuestsList quests={unansweredQuestSorted} answered={'unanswered'} />
+                  </Tab>
+                  <Tab eventKey='answered' title="Answered">
+                    <QuestsList quests={answeredQuestSorted} answered={'answered'} />
+                  </Tab>
               </Tabs>
             </div>
         }
-        {/* <div className='center'>
-          <Tabs defaultActiveKey='unanswered' className='mx-auto d-flex flex-row justify-content-center'>
-            <Tab eventKey='unanswered' title="Unanswered">
-              <QuestsList quests={unansweredQuestSorted} answered={'unanswered'} />
-            </Tab>
-            <Tab eventKey='answered' title="Answered">
-              <QuestsList quests={answeredQuestSorted} answered={'answered'} />
-            </Tab>
-          </Tabs>
-        </div> */}
       </div>
     )
   }

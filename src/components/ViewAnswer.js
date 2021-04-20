@@ -56,8 +56,9 @@ class ViewAnswer extends React.Component {
                               : 'info'
                             } 
                             now={optionOnePercentage} 
-                            label={`${optionOneVotes} out of ${totalVotes}`}
+                            label={`${optionOnePercentage}%`}
                           />
+                          <div className='center'>{optionOneVotes} out of {totalVotes}</div>
                         </div>
                         {/* answer two */}
                         <div className="card vote-card p-2 m-3">
@@ -75,8 +76,9 @@ class ViewAnswer extends React.Component {
                               : 'info'
                             } 
                             now={optionTwoPercentage} 
-                            label={`${optionTwoVotes} out of ${totalVotes}`} 
+                            label={`${optionTwoPercentage}%`} 
                           />
+                          <div className='center'>{optionTwoVotes} out of {totalVotes}</div>
                         </div>
                       </div>
                     </div>

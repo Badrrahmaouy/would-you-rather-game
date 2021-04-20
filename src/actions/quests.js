@@ -1,5 +1,4 @@
 import { saveNewQuest, saveQuestionAnswer } from "../utils/helpers"
-import { saveAnswerToUser } from "./users"
 
 export const RECEIVE_QUESTS = 'RECEIVE_QUEST'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
@@ -20,7 +19,6 @@ const saveAnswer = ({ id, authedUser, selectedOption }) => ({
 export const handleSaveAnswer = answer => {
   return dispatch => {
     dispatch(saveAnswer(answer))
-    dispatch(saveAnswerToUser(answer))
     return saveQuestionAnswer(answer)
       .catch(e => {
         console.warn('Error while submitting answer', e)
