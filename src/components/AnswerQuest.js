@@ -107,11 +107,13 @@ const mapStateToProps = ({ quests, authedUser, users }, props) => {
   let bad_path = false
   let userQuest = ''
   const quest = Object.values(quests).filter(quest => quest.id === id)
-  const hasAnswered = Object.keys(users[authedUser].answers).includes(quest[0].id)
 
-  quest.length && hasAnswered === false 
-  ? userQuest = Object.values(users).filter(u => u.id === quest[0].author) 
-  : bad_path = true
+  quest.length
+    ? Object.keys(users[authedUser].answers).includes(quest[0].id) === false
+      ? userQuest = Object.values(users).filter(u => u.id === quest[0].author)
+      : bad_path = true
+    : bad_path = true
+
   
 
   return {

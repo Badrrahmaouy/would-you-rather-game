@@ -38,8 +38,8 @@ class ViewAnswer extends React.Component {
                         <img className="user-image" src={user ? user.avatarURL : ''} alt="user" />
                       </div>
                       <div className="col-9">
-                        <h6>Results</h6>
-                        <h7>Would You Rather...?</h7>
+                        <h5>Results</h5>
+                        <h6>Would You Rather...?</h6>
                         {/* answer one */}
                         <div className="card vote-card p-2 m-3">
                           {
@@ -97,10 +97,11 @@ const mapStateToProps = ({ quests, authedUser, users}, props) => {
   let bad_path = false
   const quest = Object.values(quests).filter(quest => quest.id === id)
   let userQuest = ''
-  const hasAnwered = Object.keys(users[authedUser].answers).includes(quest[0].id)
   
-  quest.length && hasAnwered === true 
-  ? userQuest = Object.values(users).filter(u => u.id === quest[0].author) 
+  quest.length  
+    ? Object.keys(users[authedUser].answers).includes(quest[0].id) === true
+      ? userQuest = Object.values(users).filter(u => u.id === quest[0].author)
+      : bad_path = true
   : bad_path = true
 
   return {
